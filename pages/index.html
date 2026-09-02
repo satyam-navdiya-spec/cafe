@@ -1,0 +1,1783 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Brew & Bean Café | Fresh Coffee & Delicious Moments</title>
+
+    <meta name="description"
+        content="Brew & Bean Café — freshly brewed coffee, delicious food and memorable moments.">
+
+    <style>
+        /* =========================
+           RESET
+        ========================= */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #faf7f2;
+            color: #2b211b;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        img {
+            width: 100%;
+            display: block;
+        }
+
+        button {
+            font-family: inherit;
+        }
+
+        .container {
+            width: min(1180px, 92%);
+            margin: auto;
+        }
+
+
+        /* =========================
+           HEADER
+        ========================= */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.96);
+            border-bottom: 1px solid #eee4db;
+        }
+
+        .navbar {
+            height: 78px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: #6f4228;
+            color: white;
+            display: grid;
+            place-items: center;
+            font-size: 21px;
+        }
+
+        .logo-text {
+            font-size: 20px;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+        }
+
+        .logo-text span {
+            display: block;
+            font-size: 10px;
+            letter-spacing: 3px;
+            color: #9b7355;
+            font-weight: 600;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-size: 14px;
+            font-weight: 600;
+            color: #49372c;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #9b5d35;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .cart-btn,
+        .account-btn {
+            border: 1px solid #e2d5c9;
+            background: white;
+            padding: 10px 15px;
+            border-radius: 25px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .cart-btn:hover,
+        .account-btn:hover {
+            background: #6f4228;
+            color: white;
+            border-color: #6f4228;
+        }
+
+        .cart-count {
+            display: inline-grid;
+            place-items: center;
+            width: 20px;
+            height: 20px;
+            margin-left: 4px;
+            border-radius: 50%;
+            background: #d8894e;
+            color: white;
+            font-size: 10px;
+        }
+
+        .menu-toggle {
+            display: none;
+            border: none;
+            background: none;
+            font-size: 27px;
+            cursor: pointer;
+        }
+
+
+        /* =========================
+           HERO
+        ========================= */
+        .hero {
+            min-height: 720px;
+            padding-top: 78px;
+            display: flex;
+            align-items: center;
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(43, 27, 19, 0.93) 0%,
+                    rgba(43, 27, 19, 0.72) 42%,
+                    rgba(43, 27, 19, 0.18) 100%
+                ),
+                url("https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1800&q=85")
+                center/cover;
+        }
+
+        .hero-content {
+            max-width: 650px;
+            color: white;
+        }
+
+        .hero-label {
+            display: inline-block;
+            margin-bottom: 18px;
+            padding: 8px 15px;
+            border: 1px solid rgba(255,255,255,0.35);
+            border-radius: 30px;
+            font-size: 12px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .hero h1 {
+            font-family: Georgia, serif;
+            font-size: clamp(48px, 7vw, 82px);
+            line-height: 1.02;
+            margin-bottom: 24px;
+        }
+
+        .hero h1 span {
+            color: #e5ae7b;
+        }
+
+        .hero p {
+            max-width: 560px;
+            color: #eee2d8;
+            font-size: 17px;
+            margin-bottom: 32px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 24px;
+            border-radius: 30px;
+            border: 1px solid transparent;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn-primary {
+            background: #d8894e;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #c4733c;
+            transform: translateY(-2px);
+        }
+
+        .btn-light {
+            border-color: rgba(255,255,255,0.5);
+            color: white;
+            background: rgba(255,255,255,0.08);
+        }
+
+        .btn-light:hover {
+            background: white;
+            color: #3a271d;
+        }
+
+
+        /* =========================
+           QUICK INFO
+        ========================= */
+        .quick-info {
+            background: white;
+            border-bottom: 1px solid #eee4db;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            padding: 24px 0;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            border-right: 1px solid #eee4db;
+        }
+
+        .info-item:last-child {
+            border-right: none;
+        }
+
+        .info-icon {
+            font-size: 25px;
+        }
+
+        .info-item strong {
+            display: block;
+            font-size: 14px;
+        }
+
+        .info-item span {
+            font-size: 12px;
+            color: #8b7769;
+        }
+
+
+        /* =========================
+           SECTION COMMON
+        ========================= */
+        section {
+            padding: 95px 0;
+        }
+
+        .section-heading {
+            text-align: center;
+            max-width: 650px;
+            margin: 0 auto 48px;
+        }
+
+        .section-label {
+            display: inline-block;
+            margin-bottom: 10px;
+            color: #a6643b;
+            font-size: 11px;
+            letter-spacing: 3px;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+        .section-heading h2 {
+            font-family: Georgia, serif;
+            font-size: clamp(34px, 5vw, 48px);
+            line-height: 1.15;
+            margin-bottom: 15px;
+        }
+
+        .section-heading p {
+            color: #806f62;
+            font-size: 15px;
+        }
+
+
+        /* =========================
+           FEATURED PRODUCTS
+        ========================= */
+        .featured {
+            background: #faf7f2;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 22px;
+        }
+
+        .product-card {
+            background: white;
+            border: 1px solid #eee4db;
+            border-radius: 18px;
+            overflow: hidden;
+            transition: 0.35s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 18px 40px rgba(65, 42, 28, 0.10);
+        }
+
+        .product-image {
+            height: 220px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .product-image img {
+            height: 100%;
+            object-fit: cover;
+            transition: 0.5s;
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.06);
+        }
+
+        .product-tag {
+            position: absolute;
+            top: 14px;
+            left: 14px;
+            padding: 5px 10px;
+            border-radius: 20px;
+            background: white;
+            color: #73472e;
+            font-size: 10px;
+            font-weight: 800;
+        }
+
+        .product-content {
+            padding: 20px;
+        }
+
+        .product-content h3 {
+            font-family: Georgia, serif;
+            font-size: 21px;
+            margin-bottom: 6px;
+        }
+
+        .product-content p {
+            font-size: 12px;
+            color: #88766a;
+            margin-bottom: 16px;
+        }
+
+        .product-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .price {
+            font-size: 18px;
+            font-weight: 800;
+            color: #6f4228;
+        }
+
+        .add-btn {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: none;
+            background: #6f4228;
+            color: white;
+            cursor: pointer;
+            font-size: 18px;
+            transition: 0.3s;
+        }
+
+        .add-btn:hover {
+            background: #d8894e;
+            transform: rotate(90deg);
+        }
+
+        .center-btn {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+
+        /* =========================
+           ABOUT
+        ========================= */
+        .about {
+            background: white;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 70px;
+            align-items: center;
+        }
+
+        .about-images {
+            position: relative;
+            min-height: 500px;
+        }
+
+        .about-main-image {
+            width: 82%;
+            height: 430px;
+            object-fit: cover;
+            border-radius: 20px;
+        }
+
+        .about-small-image {
+            position: absolute;
+            width: 48%;
+            height: 210px;
+            object-fit: cover;
+            right: 0;
+            bottom: 0;
+            border: 10px solid white;
+            border-radius: 20px;
+        }
+
+        .experience-box {
+            position: absolute;
+            left: 25px;
+            bottom: 35px;
+            background: #6f4228;
+            color: white;
+            padding: 18px 22px;
+            border-radius: 14px;
+            text-align: center;
+        }
+
+        .experience-box strong {
+            display: block;
+            font-family: Georgia, serif;
+            font-size: 30px;
+        }
+
+        .experience-box span {
+            font-size: 11px;
+            opacity: 0.8;
+        }
+
+        .about-content .section-label {
+            margin-bottom: 8px;
+        }
+
+        .about-content h2 {
+            font-family: Georgia, serif;
+            font-size: clamp(35px, 5vw, 52px);
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .about-content > p {
+            color: #806f62;
+            font-size: 15px;
+            margin-bottom: 18px;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 28px 0;
+        }
+
+        .feature {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .feature-icon {
+            width: 35px;
+            height: 35px;
+            display: grid;
+            place-items: center;
+            border-radius: 50%;
+            background: #f2e5d8;
+        }
+
+
+        /* =========================
+           SPECIAL OFFER
+        ========================= */
+        .offer {
+            padding: 75px 0;
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(57, 33, 22, 0.96),
+                    rgba(57, 33, 22, 0.70)
+                ),
+                url("https://images.unsplash.com/photo-1498804103079-a6351b050096?auto=format&fit=crop&w=1600&q=85")
+                center/cover;
+            color: white;
+        }
+
+        .offer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .offer-content h2 {
+            font-family: Georgia, serif;
+            font-size: clamp(32px, 5vw, 48px);
+            margin-bottom: 10px;
+        }
+
+        .offer-content p {
+            color: #e6d7ca;
+            max-width: 600px;
+        }
+
+        .offer-badge {
+            min-width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            background: #d8894e;
+            display: grid;
+            place-items: center;
+            text-align: center;
+            font-weight: 800;
+            font-size: 14px;
+            transform: rotate(-8deg);
+        }
+
+
+        /* =========================
+           TESTIMONIALS
+        ========================= */
+        .testimonials {
+            background: #f3ebe3;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+
+        .testimonial {
+            background: white;
+            padding: 28px;
+            border-radius: 18px;
+            border: 1px solid #e9ddd3;
+        }
+
+        .stars {
+            color: #d8894e;
+            margin-bottom: 15px;
+            letter-spacing: 2px;
+        }
+
+        .testimonial p {
+            font-family: Georgia, serif;
+            font-size: 17px;
+            color: #55443a;
+            margin-bottom: 22px;
+        }
+
+        .customer {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .customer-avatar {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            background: #ead8c9;
+            font-weight: 800;
+            color: #70472f;
+        }
+
+        .customer strong {
+            display: block;
+            font-size: 13px;
+        }
+
+        .customer span {
+            font-size: 11px;
+            color: #988579;
+        }
+
+
+        /* =========================
+           CTA
+        ========================= */
+        .cta {
+            background: #6f4228;
+            color: white;
+            text-align: center;
+        }
+
+        .cta-content {
+            max-width: 700px;
+            margin: auto;
+        }
+
+        .cta h2 {
+            font-family: Georgia, serif;
+            font-size: clamp(35px, 5vw, 52px);
+            margin-bottom: 15px;
+        }
+
+        .cta p {
+            color: #eadbd0;
+            margin-bottom: 28px;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+        footer {
+            background: #241914;
+            color: white;
+            padding-top: 65px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.4fr 1fr 1fr 1fr;
+            gap: 45px;
+            padding-bottom: 50px;
+        }
+
+        .footer-logo {
+            margin-bottom: 18px;
+        }
+
+        .footer-about {
+            color: #bcaea5;
+            font-size: 13px;
+            max-width: 330px;
+        }
+
+        .footer-column h3 {
+            font-size: 14px;
+            margin-bottom: 18px;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column a {
+            color: #bcaea5;
+            font-size: 13px;
+            transition: 0.3s;
+        }
+
+        .footer-column a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #3b2c24;
+            padding: 20px 0;
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            color: #8e7d72;
+            font-size: 11px;
+        }
+
+
+        /* =========================
+           TOAST
+        ========================= */
+        .toast {
+            position: fixed;
+            right: 25px;
+            bottom: 25px;
+            background: #241914;
+            color: white;
+            padding: 14px 20px;
+            border-radius: 10px;
+            font-size: 13px;
+            transform: translateY(100px);
+            opacity: 0;
+            pointer-events: none;
+            transition: 0.3s;
+            z-index: 2000;
+        }
+
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+        @media (max-width: 1000px) {
+
+            .nav-links {
+                gap: 18px;
+            }
+
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .about-grid {
+                gap: 40px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 760px) {
+
+            .navbar {
+                height: 70px;
+            }
+
+            .nav-links {
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 20px 5%;
+                gap: 18px;
+                border-bottom: 1px solid #eee4db;
+                display: none;
+            }
+
+            .nav-links.show {
+                display: flex;
+            }
+
+            .nav-actions {
+                display: none;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .hero {
+                min-height: 680px;
+            }
+
+            .hero h1 {
+                font-size: 50px;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .info-item {
+                border-right: none;
+            }
+
+            section {
+                padding: 70px 0;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-images {
+                min-height: 430px;
+            }
+
+            .about-main-image {
+                height: 370px;
+            }
+
+            .offer-content {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .testimonial-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 520px) {
+
+            .logo-text {
+                font-size: 17px;
+            }
+
+            .logo-icon {
+                width: 37px;
+                height: 37px;
+                font-size: 18px;
+            }
+
+            .hero {
+                min-height: 630px;
+            }
+
+            .hero h1 {
+                font-size: 43px;
+            }
+
+            .hero p {
+                font-size: 15px;
+            }
+
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            .about-images {
+                min-height: 360px;
+            }
+
+            .about-main-image {
+                height: 300px;
+            }
+
+            .about-small-image {
+                height: 150px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+            }
+
+            .toast {
+                left: 20px;
+                right: 20px;
+                bottom: 20px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================
+         HEADER
+    ========================== -->
+    <header>
+
+        <div class="container navbar">
+
+            <a href="index.html" class="logo">
+                <div class="logo-icon">☕</div>
+
+                <div class="logo-text">
+                    BREW & BEAN
+                    <span>CAFÉ</span>
+                </div>
+            </a>
+
+            <button class="menu-toggle" id="menuToggle">
+                ☰
+            </button>
+
+            <ul class="nav-links" id="navLinks">
+                <li>
+                    <a href="index.html" class="active">Home</a>
+                </li>
+
+                <li>
+                    <a href="menu.html">Menu</a>
+                </li>
+
+                <li>
+                    <a href="about.html">About</a>
+                </li>
+
+                <li>
+                    <a href="contact.html">Contact</a>
+                </li>
+            </ul>
+
+            <div class="nav-actions">
+
+                <button class="account-btn" onclick="goToAccount()">
+                    👤 Account
+                </button>
+
+                <button class="cart-btn" onclick="goToCart()">
+                    🛒 Cart
+                    <span class="cart-count" id="cartCount">0</span>
+                </button>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================
+         HERO
+    ========================== -->
+    <main>
+
+        <section class="hero">
+
+            <div class="container">
+
+                <div class="hero-content">
+
+                    <span class="hero-label">
+                        Freshly Brewed • Since 2018
+                    </span>
+
+                    <h1>
+                        Good Coffee.<br>
+                        <span>Good Mood.</span>
+                    </h1>
+
+                    <p>
+                        Discover carefully brewed coffee, delicious bites,
+                        and a cozy place made for conversations, creativity,
+                        and unforgettable moments.
+                    </p>
+
+                    <div class="hero-buttons">
+
+                        <a href="menu.html" class="btn btn-primary">
+                            Explore Our Menu →
+                        </a>
+
+                        <a href="#about" class="btn btn-light">
+                            Discover Our Story
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             QUICK INFO
+        ========================== -->
+        <div class="quick-info">
+
+            <div class="container info-grid">
+
+                <div class="info-item">
+                    <div class="info-icon">☕</div>
+                    <div>
+                        <strong>Freshly Brewed</strong>
+                        <span>Premium coffee beans</span>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <div class="info-icon">🥐</div>
+                    <div>
+                        <strong>Fresh Every Day</strong>
+                        <span>Made with quality ingredients</span>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <div class="info-icon">🕘</div>
+                    <div>
+                        <strong>Open Daily</strong>
+                        <span>8:00 AM — 10:00 PM</span>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================
+             FEATURED PRODUCTS
+        ========================== -->
+        <section class="featured">
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <span class="section-label">
+                        Our Favorites
+                    </span>
+
+                    <h2>
+                        Crafted For Your Cravings
+                    </h2>
+
+                    <p>
+                        From your morning coffee to your evening treat,
+                        discover some of our most-loved creations.
+                    </p>
+
+                </div>
+
+
+                <div class="product-grid">
+
+                    <!-- Product 1 -->
+                    <article class="product-card">
+
+                        <div class="product-image">
+
+                            <img
+                                src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=800&q=80"
+                                alt="Cappuccino"
+                            >
+
+                            <span class="product-tag">
+                                BESTSELLER
+                            </span>
+
+                        </div>
+
+                        <div class="product-content">
+
+                            <h3>Cappuccino</h3>
+
+                            <p>
+                                Rich espresso with silky steamed milk.
+                            </p>
+
+                            <div class="product-bottom">
+
+                                <span class="price">
+                                    ₹160
+                                </span>
+
+                                <button
+                                    class="add-btn"
+                                    onclick="addToCart('Cappuccino', 160)"
+                                >
+                                    +
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- Product 2 -->
+                    <article class="product-card">
+
+                        <div class="product-image">
+
+                            <img
+                                src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=800&q=80"
+                                alt="Classic Coffee"
+                            >
+
+                            <span class="product-tag">
+                                POPULAR
+                            </span>
+
+                        </div>
+
+                        <div class="product-content">
+
+                            <h3>Classic Coffee</h3>
+
+                            <p>
+                                Smooth, aromatic and perfectly balanced.
+                            </p>
+
+                            <div class="product-bottom">
+
+                                <span class="price">
+                                    ₹130
+                                </span>
+
+                                <button
+                                    class="add-btn"
+                                    onclick="addToCart('Classic Coffee', 130)"
+                                >
+                                    +
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- Product 3 -->
+                    <article class="product-card">
+
+                        <div class="product-image">
+
+                            <img
+                                src="https://images.unsplash.com/photo-1572449043416-55f4685c9bb7?auto=format&fit=crop&w=800&q=80"
+                                alt="Chocolate Latte"
+                            >
+
+                            <span class="product-tag">
+                                NEW
+                            </span>
+
+                        </div>
+
+                        <div class="product-content">
+
+                            <h3>Chocolate Latte</h3>
+
+                            <p>
+                                Creamy latte blended with rich chocolate.
+                            </p>
+
+                            <div class="product-bottom">
+
+                                <span class="price">
+                                    ₹190
+                                </span>
+
+                                <button
+                                    class="add-btn"
+                                    onclick="addToCart('Chocolate Latte', 190)"
+                                >
+                                    +
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- Product 4 -->
+                    <article class="product-card">
+
+                        <div class="product-image">
+
+                            <img
+                                src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=800&q=80"
+                                alt="Fresh Croissant"
+                            >
+
+                            <span class="product-tag">
+                                FRESH
+                            </span>
+
+                        </div>
+
+                        <div class="product-content">
+
+                            <h3>Butter Croissant</h3>
+
+                            <p>
+                                Golden, flaky and baked fresh every morning.
+                            </p>
+
+                            <div class="product-bottom">
+
+                                <span class="price">
+                                    ₹120
+                                </span>
+
+                                <button
+                                    class="add-btn"
+                                    onclick="addToCart('Butter Croissant', 120)"
+                                >
+                                    +
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+
+                <div class="center-btn">
+
+                    <a href="menu.html" class="btn btn-primary">
+                        View Full Menu →
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             ABOUT
+        ========================== -->
+        <section class="about" id="about">
+
+            <div class="container about-grid">
+
+                <div class="about-images">
+
+                    <img
+                        class="about-main-image"
+                        src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1000&q=85"
+                        alt="Cafe interior"
+                    >
+
+                    <img
+                        class="about-small-image"
+                        src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?auto=format&fit=crop&w=700&q=80"
+                        alt="People enjoying coffee"
+                    >
+
+                    <div class="experience-box">
+                        <strong>8+</strong>
+                        <span>Years of Brewing</span>
+                    </div>
+
+                </div>
+
+
+                <div class="about-content">
+
+                    <span class="section-label">
+                        Our Story
+                    </span>
+
+                    <h2>
+                        More Than Just A Cup Of Coffee.
+                    </h2>
+
+                    <p>
+                        Brew & Bean started with a simple idea:
+                        create a warm place where great coffee and
+                        meaningful moments come together.
+                    </p>
+
+                    <p>
+                        We carefully select our beans, prepare every
+                        drink with passion, and make every guest feel
+                        right at home.
+                    </p>
+
+
+                    <div class="features">
+
+                        <div class="feature">
+                            <div class="feature-icon">🌱</div>
+                            <span>Quality Ingredients</span>
+                        </div>
+
+                        <div class="feature">
+                            <div class="feature-icon">☕</div>
+                            <span>Expertly Brewed</span>
+                        </div>
+
+                        <div class="feature">
+                            <div class="feature-icon">❤️</div>
+                            <span>Made With Love</span>
+                        </div>
+
+                        <div class="feature">
+                            <div class="feature-icon">✨</div>
+                            <span>Cozy Experience</span>
+                        </div>
+
+                    </div>
+
+
+                    <a href="about.html" class="btn btn-primary">
+                        Learn More About Us →
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             OFFER
+        ========================== -->
+        <section class="offer">
+
+            <div class="container offer-content">
+
+                <div>
+
+                    <span class="section-label">
+                        Today's Special
+                    </span>
+
+                    <h2>
+                        Coffee + Croissant
+                    </h2>
+
+                    <p>
+                        Start your day right with our freshly brewed
+                        coffee paired with a buttery croissant.
+                        Available every morning.
+                    </p>
+
+                    <br>
+
+                    <a href="menu.html" class="btn btn-primary">
+                        Order Now →
+                    </a>
+
+                </div>
+
+
+                <div class="offer-badge">
+                    15% OFF<br>
+                    MORNING<br>
+                    COMBO
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             TESTIMONIALS
+        ========================== -->
+        <section class="testimonials">
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <span class="section-label">
+                        Customer Love
+                    </span>
+
+                    <h2>
+                        What Our Guests Say
+                    </h2>
+
+                    <p>
+                        Good coffee brings people together.
+                        Here's what our customers think.
+                    </p>
+
+                </div>
+
+
+                <div class="testimonial-grid">
+
+                    <div class="testimonial">
+
+                        <div class="stars">
+                            ★★★★★
+                        </div>
+
+                        <p>
+                            "The cappuccino is amazing and the atmosphere
+                            is perfect for spending a quiet afternoon."
+                        </p>
+
+                        <div class="customer">
+
+                            <div class="customer-avatar">
+                                A
+                            </div>
+
+                            <div>
+                                <strong>Arjun Patel</strong>
+                                <span>Regular Customer</span>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="testimonial">
+
+                        <div class="stars">
+                            ★★★★★
+                        </div>
+
+                        <p>
+                            "Beautiful place, friendly staff and delicious
+                            food. Definitely one of my favorite cafes."
+                        </p>
+
+                        <div class="customer">
+
+                            <div class="customer-avatar">
+                                P
+                            </div>
+
+                            <div>
+                                <strong>Priya Shah</strong>
+                                <span>Coffee Lover</span>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="testimonial">
+
+                        <div class="stars">
+                            ★★★★★
+                        </div>
+
+                        <p>
+                            "Great coffee, peaceful environment and the
+                            croissants are absolutely delicious."
+                        </p>
+
+                        <div class="customer">
+
+                            <div class="customer-avatar">
+                                R
+                            </div>
+
+                            <div>
+                                <strong>Rohan Mehta</strong>
+                                <span>Happy Guest</span>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             CTA
+        ========================== -->
+        <section class="cta">
+
+            <div class="container cta-content">
+
+                <h2>
+                    Your Perfect Coffee Is Waiting.
+                </h2>
+
+                <p>
+                    Explore our menu and discover your next favorite
+                    drink or delicious treat.
+                </p>
+
+                <a href="menu.html" class="btn btn-primary">
+                    Explore Menu →
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+    <footer>
+
+        <div class="container">
+
+            <div class="footer-grid">
+
+                <div>
+
+                    <div class="logo footer-logo">
+
+                        <div class="logo-icon">
+                            ☕
+                        </div>
+
+                        <div class="logo-text">
+                            BREW & BEAN
+                            <span>CAFÉ</span>
+                        </div>
+
+                    </div>
+
+                    <p class="footer-about">
+                        A cozy neighborhood cafe serving freshly brewed
+                        coffee, delicious food and good moments every day.
+                    </p>
+
+                </div>
+
+
+                <div class="footer-column">
+
+                    <h3>Quick Links</h3>
+
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="menu.html">Menu</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+
+                </div>
+
+
+                <div class="footer-column">
+
+                    <h3>Customer</h3>
+
+                    <ul>
+                        <li><a href="login.html">Login</a></li>
+                        <li><a href="register.html">Create Account</a></li>
+                        <li><a href="account.html">My Account</a></li>
+                        <li><a href="cart.html">Shopping Cart</a></li>
+                    </ul>
+
+                </div>
+
+
+                <div class="footer-column">
+
+                    <h3>Visit Us</h3>
+
+                    <ul>
+                        <li>📍 Your City, India</li>
+                        <li>📞 +91 98765 43210</li>
+                        <li>✉️ hello@brewandbean.com</li>
+                        <li>🕘 8 AM — 10 PM</li>
+                    </ul>
+
+                </div>
+
+            </div>
+
+
+            <div class="footer-bottom">
+
+                <span>
+                    © 2026 Brew & Bean Café. All rights reserved.
+                </span>
+
+                <span>
+                    Made with ☕ & ❤️
+                </span>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        Product added to cart!
+    </div>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+    <script>
+
+        /* Mobile Navigation */
+        const menuToggle = document.getElementById("menuToggle");
+        const navLinks = document.getElementById("navLinks");
+
+        menuToggle.addEventListener("click", function () {
+            navLinks.classList.toggle("show");
+        });
+
+
+        /* Temporary Cart System */
+        function getCart() {
+
+            try {
+                return JSON.parse(localStorage.getItem("cafe_cart")) || [];
+            }
+
+            catch (error) {
+                return [];
+            }
+
+        }
+
+
+        function saveCart(cart) {
+
+            localStorage.setItem(
+                "cafe_cart",
+                JSON.stringify(cart)
+            );
+
+        }
+
+
+        function updateCartCount() {
+
+            const cart = getCart();
+
+            const totalItems = cart.reduce(
+                (total, item) => total + item.quantity,
+                0
+            );
+
+            document.getElementById("cartCount").textContent =
+                totalItems;
+
+        }
+
+
+        function addToCart(name, price) {
+
+            const cart = getCart();
+
+            const existingProduct = cart.find(
+                item => item.name === name
+            );
+
+
+            if (existingProduct) {
+
+                existingProduct.quantity += 1;
+
+            }
+
+            else {
+
+                cart.push({
+                    id: Date.now(),
+                    name: name,
+                    price: price,
+                    quantity: 1
+                });
+
+            }
+
+
+            saveCart(cart);
+
+            updateCartCount();
+
+            showToast(
+                name + " added to cart!"
+            );
+
+        }
+
+
+        function showToast(message) {
+
+            const toast =
+                document.getElementById("toast");
+
+            toast.textContent = message;
+
+            toast.classList.add("show");
+
+            setTimeout(function () {
+
+                toast.classList.remove("show");
+
+            }, 2500);
+
+        }
+
+
+        function goToCart() {
+
+            window.location.href = "cart.html";
+
+        }
+
+
+        function goToAccount() {
+
+            window.location.href = "account.html";
+
+        }
+
+
+        /* Load cart count when page opens */
+        updateCartCount();
+
+    </script>
+
+</body>
+</html>
