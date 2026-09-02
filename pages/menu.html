@@ -1,0 +1,1980 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Menu | Brew & Bean Café</title>
+
+    <meta
+        name="description"
+        content="Explore the Brew & Bean Café menu — coffee, breakfast, desserts and refreshing drinks."
+    >
+
+    <style>
+
+        /* ========================================
+           RESET
+        ======================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #faf7f2;
+            color: #2b211b;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        button,
+        input {
+            font-family: inherit;
+        }
+
+        img {
+            display: block;
+            width: 100%;
+        }
+
+        .container {
+            width: min(1180px, 92%);
+            margin: auto;
+        }
+
+
+        /* ========================================
+           HEADER
+        ======================================== */
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+
+            background: rgba(255, 255, 255, 0.97);
+
+            border-bottom: 1px solid #eee4db;
+        }
+
+        .navbar {
+            height: 78px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            width: 42px;
+            height: 42px;
+
+            border-radius: 50%;
+
+            background: #6f4228;
+            color: white;
+
+            display: grid;
+            place-items: center;
+
+            font-size: 21px;
+        }
+
+        .logo-text {
+            font-size: 20px;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+        }
+
+        .logo-text span {
+            display: block;
+
+            color: #9b7355;
+
+            font-size: 10px;
+            letter-spacing: 3px;
+            font-weight: 600;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #49372c;
+
+            font-size: 14px;
+            font-weight: 600;
+
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #9b5d35;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .cart-btn,
+        .account-btn {
+            padding: 10px 15px;
+
+            border: 1px solid #e2d5c9;
+            border-radius: 25px;
+
+            background: white;
+
+            font-size: 13px;
+            font-weight: 600;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+        }
+
+        .cart-btn:hover,
+        .account-btn:hover {
+            background: #6f4228;
+            border-color: #6f4228;
+            color: white;
+        }
+
+        .cart-count {
+            width: 20px;
+            height: 20px;
+
+            display: inline-grid;
+            place-items: center;
+
+            margin-left: 4px;
+
+            border-radius: 50%;
+
+            background: #d8894e;
+            color: white;
+
+            font-size: 10px;
+        }
+
+        .menu-toggle {
+            display: none;
+
+            border: none;
+            background: none;
+
+            font-size: 27px;
+
+            cursor: pointer;
+        }
+
+
+        /* ========================================
+           PAGE HERO
+        ======================================== */
+
+        .page-hero {
+            min-height: 390px;
+
+            padding-top: 78px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+
+            color: white;
+
+            background:
+                linear-gradient(
+                    rgba(45, 28, 20, 0.78),
+                    rgba(45, 28, 20, 0.78)
+                ),
+                url("https://images.unsplash.com/photo-1445116572660-236099ec97a0?auto=format&fit=crop&w=1800&q=85")
+                center / cover;
+        }
+
+        .page-hero-content {
+            max-width: 700px;
+        }
+
+        .page-label {
+            display: inline-block;
+
+            margin-bottom: 15px;
+
+            padding: 7px 14px;
+
+            border: 1px solid rgba(255,255,255,0.35);
+            border-radius: 30px;
+
+            font-size: 11px;
+            letter-spacing: 3px;
+
+            text-transform: uppercase;
+        }
+
+        .page-hero h1 {
+            margin-bottom: 15px;
+
+            font-family: Georgia, serif;
+
+            font-size: clamp(48px, 7vw, 72px);
+            line-height: 1.05;
+        }
+
+        .page-hero p {
+            max-width: 580px;
+            margin: auto;
+
+            color: #e9ddd4;
+
+            font-size: 15px;
+        }
+
+
+        /* ========================================
+           MENU SECTION
+        ======================================== */
+
+        .menu-section {
+            padding: 80px 0 100px;
+        }
+
+
+        /* ========================================
+           SEARCH + FILTER AREA
+        ======================================== */
+
+        .menu-toolbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 25px;
+
+            margin-bottom: 40px;
+        }
+
+        .search-box {
+            position: relative;
+
+            width: 330px;
+        }
+
+        .search-box span {
+            position: absolute;
+
+            left: 17px;
+            top: 50%;
+
+            transform: translateY(-50%);
+
+            font-size: 17px;
+        }
+
+        .search-box input {
+            width: 100%;
+
+            padding: 14px 18px 14px 46px;
+
+            border: 1px solid #e2d5c9;
+            border-radius: 30px;
+
+            outline: none;
+
+            background: white;
+
+            color: #3a2b22;
+
+            font-size: 13px;
+
+            transition: 0.3s;
+        }
+
+        .search-box input:focus {
+            border-color: #9b5d35;
+
+            box-shadow:
+                0 0 0 3px rgba(155, 93, 53, 0.08);
+        }
+
+        .category-buttons {
+            display: flex;
+            align-items: center;
+
+            gap: 8px;
+
+            flex-wrap: wrap;
+        }
+
+        .category-btn {
+            padding: 10px 17px;
+
+            border: 1px solid #dfd1c5;
+            border-radius: 30px;
+
+            background: white;
+
+            color: #624b3b;
+
+            font-size: 12px;
+            font-weight: 700;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+        }
+
+        .category-btn:hover,
+        .category-btn.active {
+            background: #6f4228;
+            border-color: #6f4228;
+
+            color: white;
+        }
+
+
+        /* ========================================
+           MENU GRID
+        ======================================== */
+
+        .menu-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 25px;
+        }
+
+
+        /* ========================================
+           PRODUCT CARD
+        ======================================== */
+
+        .product-card {
+            position: relative;
+
+            overflow: hidden;
+
+            background: white;
+
+            border: 1px solid #eee4db;
+            border-radius: 18px;
+
+            transition: 0.35s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-7px);
+
+            box-shadow:
+                0 18px 40px rgba(65, 42, 28, 0.10);
+        }
+
+        .product-image {
+            position: relative;
+
+            height: 250px;
+
+            overflow: hidden;
+        }
+
+        .product-image img {
+            height: 100%;
+
+            object-fit: cover;
+
+            transition: 0.5s;
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.07);
+        }
+
+        .product-tag {
+            position: absolute;
+
+            top: 15px;
+            left: 15px;
+
+            padding: 6px 11px;
+
+            border-radius: 20px;
+
+            background: white;
+
+            color: #70472f;
+
+            font-size: 10px;
+            font-weight: 800;
+
+            letter-spacing: 0.5px;
+        }
+
+        .product-category {
+            position: absolute;
+
+            right: 15px;
+            top: 15px;
+
+            padding: 6px 10px;
+
+            border-radius: 20px;
+
+            background: rgba(36, 25, 20, 0.75);
+
+            color: white;
+
+            font-size: 9px;
+            font-weight: 700;
+        }
+
+        .product-content {
+            padding: 22px;
+        }
+
+        .product-content h3 {
+            margin-bottom: 7px;
+
+            font-family: Georgia, serif;
+
+            font-size: 23px;
+        }
+
+        .product-content p {
+            min-height: 44px;
+
+            margin-bottom: 18px;
+
+            color: #88766a;
+
+            font-size: 13px;
+        }
+
+        .product-bottom {
+            display: flex;
+
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .price {
+            color: #6f4228;
+
+            font-size: 19px;
+            font-weight: 800;
+        }
+
+        .product-actions {
+            display: flex;
+            align-items: center;
+
+            gap: 8px;
+        }
+
+        .details-btn {
+            padding: 9px 14px;
+
+            border: 1px solid #dfd1c5;
+            border-radius: 20px;
+
+            background: white;
+
+            color: #6f4228;
+
+            font-size: 11px;
+            font-weight: 700;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+        }
+
+        .details-btn:hover {
+            background: #f5ede6;
+        }
+
+        .add-btn {
+            width: 38px;
+            height: 38px;
+
+            border: none;
+            border-radius: 50%;
+
+            background: #6f4228;
+
+            color: white;
+
+            font-size: 19px;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+        }
+
+        .add-btn:hover {
+            background: #d8894e;
+
+            transform: rotate(90deg);
+        }
+
+
+        /* ========================================
+           NO RESULTS
+        ======================================== */
+
+        .no-results {
+            display: none;
+
+            padding: 70px 20px;
+
+            text-align: center;
+        }
+
+        .no-results-icon {
+            margin-bottom: 15px;
+
+            font-size: 45px;
+        }
+
+        .no-results h3 {
+            margin-bottom: 7px;
+
+            font-family: Georgia, serif;
+
+            font-size: 28px;
+        }
+
+        .no-results p {
+            color: #8b7769;
+
+            font-size: 14px;
+        }
+
+
+        /* ========================================
+           MENU BOTTOM CTA
+        ======================================== */
+
+        .menu-note {
+            margin-top: 65px;
+
+            padding: 35px;
+
+            border-radius: 18px;
+
+            background: #f1e6dc;
+
+            text-align: center;
+        }
+
+        .menu-note h3 {
+            margin-bottom: 8px;
+
+            font-family: Georgia, serif;
+
+            font-size: 27px;
+        }
+
+        .menu-note p {
+            color: #806f62;
+
+            font-size: 13px;
+        }
+
+
+        /* ========================================
+           FOOTER
+        ======================================== */
+
+        footer {
+            padding-top: 65px;
+
+            background: #241914;
+
+            color: white;
+        }
+
+        .footer-grid {
+            display: grid;
+
+            grid-template-columns:
+                1.4fr 1fr 1fr 1fr;
+
+            gap: 45px;
+
+            padding-bottom: 50px;
+        }
+
+        .footer-logo {
+            margin-bottom: 18px;
+        }
+
+        .footer-about {
+            max-width: 330px;
+
+            color: #bcaea5;
+
+            font-size: 13px;
+        }
+
+        .footer-column h3 {
+            margin-bottom: 18px;
+
+            font-size: 14px;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column a {
+            color: #bcaea5;
+
+            font-size: 13px;
+
+            transition: 0.3s;
+        }
+
+        .footer-column a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            display: flex;
+
+            justify-content: space-between;
+
+            gap: 20px;
+
+            padding: 20px 0;
+
+            border-top: 1px solid #3b2c24;
+
+            color: #8e7d72;
+
+            font-size: 11px;
+        }
+
+
+        /* ========================================
+           TOAST
+        ======================================== */
+
+        .toast {
+            position: fixed;
+
+            right: 25px;
+            bottom: 25px;
+
+            z-index: 2000;
+
+            padding: 14px 20px;
+
+            border-radius: 10px;
+
+            background: #241914;
+
+            color: white;
+
+            font-size: 13px;
+
+            transform: translateY(100px);
+
+            opacity: 0;
+
+            pointer-events: none;
+
+            transition: 0.3s;
+        }
+
+        .toast.show {
+            transform: translateY(0);
+
+            opacity: 1;
+        }
+
+
+        /* ========================================
+           RESPONSIVE
+        ======================================== */
+
+        @media (max-width: 1050px) {
+
+            .menu-toolbar {
+                flex-direction: column;
+
+                align-items: stretch;
+            }
+
+            .search-box {
+                width: 100%;
+            }
+
+            .category-buttons {
+                justify-content: center;
+            }
+
+            .menu-grid {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+            .footer-grid {
+                grid-template-columns:
+                    1fr 1fr;
+            }
+        }
+
+
+        @media (max-width: 760px) {
+
+            .navbar {
+                height: 70px;
+            }
+
+            .nav-links {
+                position: absolute;
+
+                top: 70px;
+                left: 0;
+
+                width: 100%;
+
+                display: none;
+
+                flex-direction: column;
+
+                align-items: flex-start;
+
+                gap: 18px;
+
+                padding: 20px 5%;
+
+                background: white;
+
+                border-bottom: 1px solid #eee4db;
+            }
+
+            .nav-links.show {
+                display: flex;
+            }
+
+            .nav-actions {
+                display: none;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .page-hero {
+                min-height: 350px;
+            }
+
+            .menu-section {
+                padding: 60px 0 75px;
+            }
+
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .product-image {
+                height: 260px;
+            }
+        }
+
+
+        @media (max-width: 520px) {
+
+            .logo-text {
+                font-size: 17px;
+            }
+
+            .logo-icon {
+                width: 37px;
+                height: 37px;
+
+                font-size: 18px;
+            }
+
+            .page-hero h1 {
+                font-size: 45px;
+            }
+
+            .category-buttons {
+                justify-content: flex-start;
+
+                overflow-x: auto;
+
+                flex-wrap: nowrap;
+
+                padding-bottom: 5px;
+            }
+
+            .category-btn {
+                flex-shrink: 0;
+            }
+
+            .product-content {
+                padding: 18px;
+            }
+
+            .menu-note {
+                padding: 25px 18px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+            }
+
+            .toast {
+                left: 20px;
+                right: 20px;
+
+                bottom: 20px;
+
+                text-align: center;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+    <!-- ========================================
+         HEADER
+    ========================================= -->
+
+    <header>
+
+        <div class="container navbar">
+
+            <a href="index.html" class="logo">
+
+                <div class="logo-icon">
+                    ☕
+                </div>
+
+                <div class="logo-text">
+                    BREW & BEAN
+                    <span>CAFÉ</span>
+                </div>
+
+            </a>
+
+
+            <button
+                class="menu-toggle"
+                id="menuToggle"
+                aria-label="Open navigation"
+            >
+                ☰
+            </button>
+
+
+            <ul class="nav-links" id="navLinks">
+
+                <li>
+                    <a href="index.html">
+                        Home
+                    </a>
+                </li>
+
+                <li>
+                    <a href="menu.html" class="active">
+                        Menu
+                    </a>
+                </li>
+
+                <li>
+                    <a href="about.html">
+                        About
+                    </a>
+                </li>
+
+                <li>
+                    <a href="contact.html">
+                        Contact
+                    </a>
+                </li>
+
+            </ul>
+
+
+            <div class="nav-actions">
+
+                <button
+                    class="account-btn"
+                    onclick="goToAccount()"
+                >
+                    👤 Account
+                </button>
+
+                <button
+                    class="cart-btn"
+                    onclick="goToCart()"
+                >
+                    🛒 Cart
+
+                    <span
+                        class="cart-count"
+                        id="cartCount"
+                    >
+                        0
+                    </span>
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- ========================================
+         PAGE HERO
+    ========================================= -->
+
+    <section class="page-hero">
+
+        <div class="container page-hero-content">
+
+            <span class="page-label">
+                Fresh • Delicious • Made With Love
+            </span>
+
+            <h1>
+                Our Menu
+            </h1>
+
+            <p>
+                From rich espresso and refreshing drinks to freshly
+                baked treats, find something delicious for every mood.
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ========================================
+         MENU
+    ========================================= -->
+
+    <main>
+
+        <section class="menu-section">
+
+            <div class="container">
+
+
+                <!-- SEARCH + FILTER -->
+
+                <div class="menu-toolbar">
+
+                    <div class="search-box">
+
+                        <span>
+                            🔍
+                        </span>
+
+                        <input
+                            type="text"
+                            id="searchInput"
+                            placeholder="Search coffee, food, dessert..."
+                            autocomplete="off"
+                        >
+
+                    </div>
+
+
+                    <div
+                        class="category-buttons"
+                        id="categoryButtons"
+                    >
+
+                        <button
+                            class="category-btn active"
+                            data-category="all"
+                        >
+                            All
+                        </button>
+
+                        <button
+                            class="category-btn"
+                            data-category="coffee"
+                        >
+                            ☕ Coffee
+                        </button>
+
+                        <button
+                            class="category-btn"
+                            data-category="cold-drinks"
+                        >
+                            🧊 Cold Drinks
+                        </button>
+
+                        <button
+                            class="category-btn"
+                            data-category="breakfast"
+                        >
+                            🥐 Breakfast
+                        </button>
+
+                        <button
+                            class="category-btn"
+                            data-category="dessert"
+                        >
+                            🍰 Desserts
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- PRODUCT GRID -->
+
+                <div
+                    class="menu-grid"
+                    id="menuGrid"
+                >
+
+                </div>
+
+
+                <!-- NO RESULTS -->
+
+                <div
+                    class="no-results"
+                    id="noResults"
+                >
+
+                    <div class="no-results-icon">
+                        ☕
+                    </div>
+
+                    <h3>
+                        Nothing Found
+                    </h3>
+
+                    <p>
+                        Try searching for something different.
+                    </p>
+
+                </div>
+
+
+
+                <!-- BOTTOM NOTE -->
+
+                <div class="menu-note">
+
+                    <h3>
+                        Something Special Every Day
+                    </h3>
+
+                    <p>
+                        Ask our team about today's freshly prepared
+                        specials and seasonal recommendations.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- ========================================
+         FOOTER
+    ========================================= -->
+
+    <footer>
+
+        <div class="container">
+
+            <div class="footer-grid">
+
+
+                <div>
+
+                    <div class="logo footer-logo">
+
+                        <div class="logo-icon">
+                            ☕
+                        </div>
+
+                        <div class="logo-text">
+                            BREW & BEAN
+                            <span>CAFÉ</span>
+                        </div>
+
+                    </div>
+
+                    <p class="footer-about">
+                        A cozy neighborhood cafe serving freshly brewed
+                        coffee, delicious food and good moments every day.
+                    </p>
+
+                </div>
+
+
+
+                <div class="footer-column">
+
+                    <h3>
+                        Quick Links
+                    </h3>
+
+                    <ul>
+
+                        <li>
+                            <a href="index.html">
+                                Home
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="menu.html">
+                                Menu
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="about.html">
+                                About
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="contact.html">
+                                Contact
+                            </a>
+                        </li>
+
+                    </ul>
+
+                </div>
+
+
+
+                <div class="footer-column">
+
+                    <h3>
+                        Customer
+                    </h3>
+
+                    <ul>
+
+                        <li>
+                            <a href="login.html">
+                                Login
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="register.html">
+                                Create Account
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="account.html">
+                                My Account
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="cart.html">
+                                Shopping Cart
+                            </a>
+                        </li>
+
+                    </ul>
+
+                </div>
+
+
+
+                <div class="footer-column">
+
+                    <h3>
+                        Visit Us
+                    </h3>
+
+                    <ul>
+
+                        <li>
+                            📍 Your City, India
+                        </li>
+
+                        <li>
+                            📞 +91 98765 43210
+                        </li>
+
+                        <li>
+                            ✉️ hello@brewandbean.com
+                        </li>
+
+                        <li>
+                            🕘 8 AM — 10 PM
+                        </li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="footer-bottom">
+
+                <span>
+                    © 2026 Brew & Bean Café. All rights reserved.
+                </span>
+
+                <span>
+                    Made with ☕ & ❤️
+                </span>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+
+    <!-- ========================================
+         TOAST
+    ========================================= -->
+
+    <div
+        class="toast"
+        id="toast"
+    >
+        Product added to cart!
+    </div>
+
+
+
+    <!-- ========================================
+         JAVASCRIPT
+    ========================================= -->
+
+    <script>
+
+        /* ========================================
+           PRODUCT DATA
+        ========================================= */
+
+        const products = [
+
+            {
+                id: 1,
+                name: "Cappuccino",
+                category: "coffee",
+                price: 160,
+                tag: "BESTSELLER",
+                description:
+                    "Rich espresso with silky steamed milk and creamy foam.",
+                image:
+                    "https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=900&q=85"
+            },
+
+            {
+                id: 2,
+                name: "Classic Coffee",
+                category: "coffee",
+                price: 130,
+                tag: "POPULAR",
+                description:
+                    "Smooth, aromatic coffee brewed to perfect balance.",
+                image:
+                    "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=900&q=85"
+            },
+
+            {
+                id: 3,
+                name: "Chocolate Latte",
+                category: "coffee",
+                price: 190,
+                tag: "NEW",
+                description:
+                    "Creamy espresso latte blended with rich chocolate.",
+                image:
+                    "https://images.unsplash.com/photo-1572449043416-55f4685c9bb7?auto=format&fit=crop&w=900&q=85"
+            },
+
+            {
+                id: 4,
+                name: "Caramel Macchiato",
+                category: "coffee",
+                price: 210,
+                tag: "FAVORITE",
+                description:
+                    "Espresso, steamed milk and caramel finished with foam.",
+                image:
+                    "https://images.unsplash.com/photo-1485808191679-5f86510681a2?auto=format&fit=crop&w=900&q=85"
+            },
+
+            {
+                id: 5,
+                name: "Iced Latte",
+                category: "cold-drinks",
+                price: 180,
+                tag: "CHILLED",
+                description:
+                    "Cold espresso and smooth milk served over ice.",
+                image:
+                    "https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&w=900&q=85"
+            },
+
+            {
+                id: 6,
+                name: "Cold Coffee",
+                category: "cold-drinks",
+                price: 170,
+                tag: "POPULAR",
+                description:
+                    "Refreshing blended coffee with a creamy finish.",
+                image:
+                    "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=900&q=85"
+            },
+
+            {
+                id: 7,
+                name: "Fresh Orange Cooler",
+                category: "cold-drinks",
+                price: 150,
+                tag: "FRESH",
+                description:
+                    "Fresh orange juice with ice for a refreshing drink.",
+                image:
+                    "https://images.unsplash.com/photo-1600271886742-f049cd451bba?auto=format&fit=crop&w=900&q=85"
+            },
+
+            {
+                id: 8,
+                name: "Butter Croissant",
+                category: "breakfast",
+                price: 120,
+                tag: "FRESH",
+                description:
+                    "Golden, flaky and baked fresh every morning.",
+                image:
+                    "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=900&q=85"
+            },
+
+            {
+                id: 9,
+                name: "Avocado Toast",
+                category: "breakfast",
+                price: 240,
+                tag: "HEALTHY",
+                description:
+                    "Toasted artisan bread topped with creamy avocado.",
+                image:
+                    "https://images.unsplash.com/photo-1541519227354-08fa5d50c44d?auto=format&fit=crop&w=900&q=85"
+            },
+
+            {
+                id: 10,
+                name: "Classic Pancakes",
+                category: "breakfast",
+                price: 220,
+                tag: "POPULAR",
+                description:
+                    "Soft pancakes served with syrup and fresh toppings.",
+                image:
+                    "https://images.unsplash.com/photo-1528207776546-365bb710ee93?auto=format&fit=crop&w=900&q=85"
+            },
+
+            {
+                id: 11,
+                name: "Chocolate Cake",
+                category: "dessert",
+                price: 180,
+                tag: "FAVORITE",
+                description:
+                    "Rich chocolate cake with a smooth creamy layer.",
+                image:
+                    "https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=900&q=85"
+            },
+
+            {
+                id: 12,
+                name: "Cheesecake",
+                category: "dessert",
+                price: 200,
+                tag: "POPULAR",
+                description:
+                    "Creamy classic cheesecake with a buttery biscuit base.",
+                image:
+                    "https://images.unsplash.com/photo-1565958011703-44f9829ba187?auto=format&fit=crop&w=900&q=85"
+            }
+
+        ];
+
+
+
+        /* ========================================
+           DOM ELEMENTS
+        ======================================== */
+
+        const menuGrid =
+            document.getElementById("menuGrid");
+
+        const searchInput =
+            document.getElementById("searchInput");
+
+        const categoryButtons =
+            document.querySelectorAll(".category-btn");
+
+        const noResults =
+            document.getElementById("noResults");
+
+        const cartCount =
+            document.getElementById("cartCount");
+
+
+
+        /* ========================================
+           CURRENT FILTER
+        ======================================== */
+
+        let currentCategory = "all";
+
+
+
+        /* ========================================
+           DISPLAY PRODUCTS
+        ======================================== */
+
+        function displayProducts() {
+
+            const searchTerm =
+                searchInput.value
+                    .trim()
+                    .toLowerCase();
+
+
+            const filteredProducts =
+                products.filter(product => {
+
+                    const matchesCategory =
+                        currentCategory === "all" ||
+                        product.category === currentCategory;
+
+
+                    const matchesSearch =
+                        product.name
+                            .toLowerCase()
+                            .includes(searchTerm) ||
+
+                        product.description
+                            .toLowerCase()
+                            .includes(searchTerm);
+
+
+                    return (
+                        matchesCategory &&
+                        matchesSearch
+                    );
+
+                });
+
+
+            menuGrid.innerHTML = "";
+
+
+            if (filteredProducts.length === 0) {
+
+                noResults.style.display =
+                    "block";
+
+                return;
+
+            }
+
+
+            noResults.style.display =
+                "none";
+
+
+            filteredProducts.forEach(product => {
+
+                menuGrid.appendChild(
+                    createProductCard(product)
+                );
+
+            });
+
+        }
+
+
+
+        /* ========================================
+           CREATE PRODUCT CARD
+        ======================================== */
+
+        function createProductCard(product) {
+
+            const card =
+                document.createElement("article");
+
+            card.className =
+                "product-card";
+
+
+            card.innerHTML = `
+
+                <div class="product-image">
+
+                    <img
+                        src="${product.image}"
+                        alt="${product.name}"
+                        loading="lazy"
+                    >
+
+                    <span class="product-tag">
+                        ${product.tag}
+                    </span>
+
+                    <span class="product-category">
+                        ${formatCategory(product.category)}
+                    </span>
+
+                </div>
+
+
+                <div class="product-content">
+
+                    <h3>
+                        ${product.name}
+                    </h3>
+
+                    <p>
+                        ${product.description}
+                    </p>
+
+
+                    <div class="product-bottom">
+
+                        <span class="price">
+                            ₹${product.price}
+                        </span>
+
+
+                        <div class="product-actions">
+
+                            <button
+                                class="details-btn"
+                                onclick="viewProduct(${product.id})"
+                            >
+                                Details
+                            </button>
+
+                            <button
+                                class="add-btn"
+                                onclick="addToCart(${product.id})"
+                                aria-label="Add ${product.name} to cart"
+                            >
+                                +
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            `;
+
+
+            return card;
+
+        }
+
+
+
+        /* ========================================
+           FORMAT CATEGORY NAME
+        ======================================== */
+
+        function formatCategory(category) {
+
+            const categoryNames = {
+
+                "coffee": "Coffee",
+
+                "cold-drinks": "Cold Drinks",
+
+                "breakfast": "Breakfast",
+
+                "dessert": "Dessert"
+
+            };
+
+
+            return categoryNames[category] ||
+                category;
+
+        }
+
+
+
+        /* ========================================
+           CATEGORY FILTER
+        ======================================== */
+
+        categoryButtons.forEach(button => {
+
+            button.addEventListener(
+                "click",
+                function () {
+
+                    categoryButtons.forEach(
+                        btn =>
+                            btn.classList.remove("active")
+                    );
+
+
+                    this.classList.add("active");
+
+
+                    currentCategory =
+                        this.dataset.category;
+
+
+                    displayProducts();
+
+                }
+            );
+
+        });
+
+
+
+        /* ========================================
+           SEARCH
+        ======================================== */
+
+        searchInput.addEventListener(
+            "input",
+            function () {
+
+                displayProducts();
+
+            }
+        );
+
+
+
+        /* ========================================
+           CART
+        ======================================== */
+
+        function getCart() {
+
+            try {
+
+                return JSON.parse(
+                    localStorage.getItem("cafe_cart")
+                ) || [];
+
+            }
+
+            catch (error) {
+
+                return [];
+
+            }
+
+        }
+
+
+
+        function saveCart(cart) {
+
+            localStorage.setItem(
+                "cafe_cart",
+                JSON.stringify(cart)
+            );
+
+        }
+
+
+
+        function addToCart(productId) {
+
+            const product =
+                products.find(
+                    item => item.id === productId
+                );
+
+
+            if (!product) {
+                return;
+            }
+
+
+            const cart =
+                getCart();
+
+
+            const existingProduct =
+                cart.find(
+                    item =>
+                        item.productId === product.id
+                );
+
+
+            if (existingProduct) {
+
+                existingProduct.quantity += 1;
+
+            }
+
+            else {
+
+                cart.push({
+
+                    productId: product.id,
+
+                    name: product.name,
+
+                    price: product.price,
+
+                    quantity: 1
+
+                });
+
+            }
+
+
+            saveCart(cart);
+
+            updateCartCount();
+
+
+            showToast(
+                product.name +
+                " added to cart!"
+            );
+
+        }
+
+
+
+        /* ========================================
+           CART COUNT
+        ======================================== */
+
+        function updateCartCount() {
+
+            const cart =
+                getCart();
+
+
+            const totalItems =
+                cart.reduce(
+                    (total, item) =>
+                        total + item.quantity,
+                    0
+                );
+
+
+            cartCount.textContent =
+                totalItems;
+
+        }
+
+
+
+        /* ========================================
+           PRODUCT DETAILS
+        ======================================== */
+
+        function viewProduct(productId) {
+
+            const product =
+                products.find(
+                    item => item.id === productId
+                );
+
+
+            if (!product) {
+                return;
+            }
+
+
+            /*
+                Product page will be created
+                in Step 3.
+
+                For now, save the selected
+                product ID so Step 3 can
+                read it.
+            */
+
+            localStorage.setItem(
+                "selected_product_id",
+                product.id
+            );
+
+
+            window.location.href =
+                "product.html";
+
+        }
+
+
+
+        /* ========================================
+           NAVIGATION
+        ======================================== */
+
+        function goToCart() {
+
+            window.location.href =
+                "cart.html";
+
+        }
+
+
+
+        function goToAccount() {
+
+            window.location.href =
+                "account.html";
+
+        }
+
+
+
+        /* ========================================
+           TOAST
+        ======================================== */
+
+        function showToast(message) {
+
+            const toast =
+                document.getElementById("toast");
+
+
+            toast.textContent =
+                message;
+
+
+            toast.classList.add("show");
+
+
+            setTimeout(
+                function () {
+
+                    toast.classList.remove("show");
+
+                },
+                2500
+            );
+
+        }
+
+
+
+        /* ========================================
+           MOBILE MENU
+        ======================================== */
+
+        const menuToggle =
+            document.getElementById(
+                "menuToggle"
+            );
+
+        const navLinks =
+            document.getElementById(
+                "navLinks"
+            );
+
+
+        menuToggle.addEventListener(
+            "click",
+            function () {
+
+                navLinks.classList.toggle(
+                    "show"
+                );
+
+            }
+        );
+
+
+
+        /* ========================================
+           INITIAL LOAD
+        ======================================== */
+
+        displayProducts();
+
+        updateCartCount();
+
+    </script>
+
+</body>
+</html>
+
