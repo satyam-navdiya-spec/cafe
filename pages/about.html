@@ -1,0 +1,1448 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>About Us | Brew & Bean Café</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #faf8f5;
+            color: #2b2118;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        button {
+            font-family: inherit;
+            cursor: pointer;
+        }
+
+        /* ================= HEADER ================= */
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+
+            background: rgba(255, 255, 255, 0.96);
+            border-bottom: 1px solid #eee5dc;
+        }
+
+        .navbar {
+            max-width: 1200px;
+            height: 75px;
+            margin: auto;
+            padding: 0 25px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            color: #6f4327;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+        }
+
+        .nav-links a {
+            font-size: 14px;
+            font-weight: 600;
+            color: #4c3a2d;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #a45d2f;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-btn {
+            position: relative;
+
+            padding: 9px 15px;
+
+            border: 1px solid #d9c8b9;
+            border-radius: 20px;
+
+            background: white;
+            color: #5d3b26;
+
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -7px;
+            right: -6px;
+
+            min-width: 19px;
+            height: 19px;
+            padding: 0 5px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: #a45d2f;
+            color: white;
+
+            border-radius: 20px;
+            font-size: 11px;
+        }
+
+        .menu-toggle {
+            display: none;
+
+            border: none;
+            background: transparent;
+
+            font-size: 26px;
+        }
+
+        /* ================= MAIN ================= */
+
+        main {
+            padding-top: 75px;
+        }
+
+        /* ================= PAGE HERO ================= */
+
+        .page-hero {
+            min-height: 430px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+
+            padding: 70px 25px;
+
+            background:
+                linear-gradient(
+                    rgba(48, 33, 23, 0.65),
+                    rgba(48, 33, 23, 0.65)
+                ),
+                url("https://images.unsplash.com/photo-1445116572660-236099ec97a0?auto=format&fit=crop&w=1800&q=85");
+
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-content {
+            max-width: 750px;
+            color: white;
+        }
+
+        .hero-label {
+            display: inline-block;
+
+            margin-bottom: 15px;
+
+            color: #f3c9a6;
+
+            font-size: 12px;
+            font-weight: 800;
+
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .hero-content h1 {
+            font-family: Georgia, serif;
+
+            font-size: clamp(42px, 6vw, 70px);
+            line-height: 1.1;
+
+            margin-bottom: 20px;
+        }
+
+        .hero-content p {
+            max-width: 600px;
+            margin: auto;
+
+            color: #f1e8e0;
+            font-size: 17px;
+        }
+
+        /* ================= STORY ================= */
+
+        .story-section {
+            max-width: 1200px;
+            margin: auto;
+
+            padding: 90px 25px;
+        }
+
+        .story-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 70px;
+
+            align-items: center;
+        }
+
+        .story-image {
+            width: 100%;
+            height: 520px;
+
+            object-fit: cover;
+
+            border-radius: 24px;
+        }
+
+        .section-label {
+            color: #a45d2f;
+
+            font-size: 12px;
+            font-weight: 800;
+
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .story-content h2 {
+            font-family: Georgia, serif;
+
+            font-size: 44px;
+            line-height: 1.2;
+
+            margin: 12px 0 20px;
+        }
+
+        .story-content p {
+            color: #6d5d50;
+            font-size: 15px;
+
+            margin-bottom: 17px;
+        }
+
+        .story-signature {
+            margin-top: 25px;
+
+            font-family: Georgia, serif;
+            font-style: italic;
+
+            font-size: 21px;
+            color: #6f4327;
+        }
+
+        /* ================= STATS ================= */
+
+        .stats-section {
+            background: #302117;
+            color: white;
+        }
+
+        .stats-container {
+            max-width: 1200px;
+            margin: auto;
+
+            padding: 55px 25px;
+
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+
+            text-align: center;
+        }
+
+        .stat h3 {
+            font-family: Georgia, serif;
+            font-size: 42px;
+            margin-bottom: 5px;
+        }
+
+        .stat p {
+            color: #cbbbae;
+            font-size: 13px;
+        }
+
+        /* ================= VALUES ================= */
+
+        .values-section {
+            max-width: 1200px;
+            margin: auto;
+
+            padding: 90px 25px;
+        }
+
+        .section-heading {
+            max-width: 650px;
+            margin: 0 auto 45px;
+
+            text-align: center;
+        }
+
+        .section-heading h2 {
+            font-family: Georgia, serif;
+
+            font-size: 40px;
+            margin: 10px 0 12px;
+        }
+
+        .section-heading p {
+            color: #76665b;
+            font-size: 15px;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .value-card {
+            background: white;
+
+            padding: 35px 28px;
+
+            border: 1px solid #eee4da;
+            border-radius: 18px;
+
+            text-align: center;
+
+            transition: 0.3s;
+        }
+
+        .value-card:hover {
+            transform: translateY(-6px);
+
+            box-shadow:
+                0 15px 35px rgba(80, 50, 30, 0.10);
+        }
+
+        .value-icon {
+            width: 65px;
+            height: 65px;
+
+            margin: 0 auto 18px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background: #f2e8de;
+
+            font-size: 27px;
+        }
+
+        .value-card h3 {
+            margin-bottom: 10px;
+
+            font-family: Georgia, serif;
+            font-size: 23px;
+        }
+
+        .value-card p {
+            color: #76665b;
+            font-size: 14px;
+        }
+
+        /* ================= JOURNEY ================= */
+
+        .journey-section {
+            background: #f1e7dc;
+        }
+
+        .journey-container {
+            max-width: 1000px;
+            margin: auto;
+
+            padding: 90px 25px;
+        }
+
+        .timeline {
+            position: relative;
+
+            margin-top: 50px;
+        }
+
+        .timeline::before {
+            content: "";
+
+            position: absolute;
+
+            left: 50%;
+            top: 0;
+            bottom: 0;
+
+            width: 2px;
+
+            background: #cdb8a7;
+
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            position: relative;
+
+            width: 50%;
+
+            padding: 0 45px 45px;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+            text-align: left;
+        }
+
+        .timeline-dot {
+            position: absolute;
+
+            top: 3px;
+
+            width: 15px;
+            height: 15px;
+
+            border-radius: 50%;
+
+            background: #a45d2f;
+            border: 3px solid #f1e7dc;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-dot {
+            right: -7px;
+        }
+
+        .timeline-item:nth-child(even) .timeline-dot {
+            left: -7px;
+        }
+
+        .timeline-year {
+            color: #a45d2f;
+
+            font-size: 12px;
+            font-weight: 800;
+
+            letter-spacing: 2px;
+        }
+
+        .timeline-item h3 {
+            font-family: Georgia, serif;
+
+            font-size: 24px;
+            margin: 5px 0 8px;
+        }
+
+        .timeline-item p {
+            color: #76665b;
+            font-size: 14px;
+        }
+
+        /* ================= TEAM ================= */
+
+        .team-section {
+            max-width: 1200px;
+            margin: auto;
+
+            padding: 90px 25px;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .team-card {
+            overflow: hidden;
+
+            background: white;
+
+            border: 1px solid #eee4da;
+            border-radius: 18px;
+
+            text-align: center;
+        }
+
+        .team-image {
+            width: 100%;
+            height: 300px;
+
+            object-fit: cover;
+        }
+
+        .team-info {
+            padding: 22px;
+        }
+
+        .team-info h3 {
+            font-family: Georgia, serif;
+            font-size: 23px;
+        }
+
+        .team-role {
+            color: #a45d2f;
+
+            font-size: 12px;
+            font-weight: 800;
+
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .team-info p {
+            margin-top: 10px;
+
+            color: #76665b;
+            font-size: 13px;
+        }
+
+        /* ================= CTA ================= */
+
+        .cta-section {
+            padding: 80px 25px;
+
+            background:
+                linear-gradient(
+                    rgba(111, 67, 39, 0.92),
+                    rgba(111, 67, 39, 0.92)
+                ),
+                url("https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1600&q=80");
+
+            background-size: cover;
+            background-position: center;
+
+            text-align: center;
+            color: white;
+        }
+
+        .cta-section h2 {
+            font-family: Georgia, serif;
+
+            font-size: 42px;
+            margin-bottom: 12px;
+        }
+
+        .cta-section p {
+            color: #eadbd0;
+            margin-bottom: 25px;
+        }
+
+        .cta-btn {
+            display: inline-block;
+
+            padding: 13px 25px;
+
+            border-radius: 10px;
+
+            background: white;
+            color: #6f4327;
+
+            font-size: 14px;
+            font-weight: 800;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            background: #302117;
+            color: #e9ddd3;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: auto;
+
+            padding: 50px 25px 25px;
+
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+
+            gap: 50px;
+        }
+
+        .footer-brand h3 {
+            color: white;
+            margin-bottom: 12px;
+        }
+
+        .footer-brand p {
+            max-width: 400px;
+
+            color: #cbbbae;
+            font-size: 14px;
+        }
+
+        .footer-column h4 {
+            color: white;
+            margin-bottom: 15px;
+        }
+
+        .footer-column a {
+            display: block;
+
+            color: #cbbbae;
+            font-size: 13px;
+
+            margin-bottom: 8px;
+        }
+
+        .footer-column a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #55443a;
+
+            padding: 18px 25px;
+
+            text-align: center;
+
+            color: #aa988a;
+            font-size: 12px;
+        }
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width: 900px) {
+
+            .nav-links {
+                display: none;
+            }
+
+            .nav-links.open {
+                display: flex;
+
+                position: absolute;
+                top: 75px;
+                left: 0;
+
+                width: 100%;
+
+                flex-direction: column;
+                align-items: flex-start;
+
+                padding: 25px;
+
+                background: white;
+                border-bottom: 1px solid #eee5dc;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .story-wrapper {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .story-image {
+                height: 400px;
+            }
+
+            .stats-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .team-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            .navbar {
+                padding: 0 15px;
+            }
+
+            .logo {
+                font-size: 16px;
+            }
+
+            .nav-actions {
+                gap: 5px;
+            }
+
+            .nav-btn {
+                padding: 8px 10px;
+                font-size: 11px;
+            }
+
+            .page-hero {
+                min-height: 370px;
+            }
+
+            .hero-content h1 {
+                font-size: 43px;
+            }
+
+            .hero-content p {
+                font-size: 14px;
+            }
+
+            .story-section,
+            .values-section,
+            .team-section,
+            .journey-container {
+                padding: 65px 15px;
+            }
+
+            .story-image {
+                height: 320px;
+            }
+
+            .story-content h2 {
+                font-size: 34px;
+            }
+
+            .section-heading h2 {
+                font-size: 32px;
+            }
+
+            .stats-container {
+                padding: 45px 15px;
+                gap: 20px;
+            }
+
+            .stat h3 {
+                font-size: 32px;
+            }
+
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .team-image {
+                height: 330px;
+            }
+
+            .timeline::before {
+                left: 8px;
+            }
+
+            .timeline-item,
+            .timeline-item:nth-child(odd),
+            .timeline-item:nth-child(even) {
+                width: 100%;
+                left: 0;
+
+                padding: 0 0 40px 35px;
+
+                text-align: left;
+            }
+
+            .timeline-item:nth-child(odd) .timeline-dot,
+            .timeline-item:nth-child(even) .timeline-dot {
+                left: 1px;
+                right: auto;
+            }
+
+            .cta-section h2 {
+                font-size: 32px;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+
+    <nav class="navbar">
+
+        <a href="index.html" class="logo">
+            BREW & BEAN CAFÉ
+        </a>
+
+        <div class="nav-links" id="navLinks">
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="menu.html">
+                Menu
+            </a>
+
+            <a href="about.html" class="active">
+                About
+            </a>
+
+            <a href="contact.html">
+                Contact
+            </a>
+
+        </div>
+
+        <div class="nav-actions">
+
+            <a href="account.html" class="nav-btn">
+                Account
+            </a>
+
+            <a href="cart.html" class="nav-btn">
+                Cart
+                <span class="cart-count" id="cartCount">0</span>
+            </a>
+
+            <button
+                class="menu-toggle"
+                id="menuToggle"
+                aria-label="Open menu"
+            >
+                ☰
+            </button>
+
+        </div>
+
+    </nav>
+
+</header>
+
+
+<main>
+
+    <!-- ================= PAGE HERO ================= -->
+
+    <section class="page-hero">
+
+        <div class="hero-content">
+
+            <span class="hero-label">
+                Our Story
+            </span>
+
+            <h1>
+                More Than Just Coffee
+            </h1>
+
+            <p>
+                A cozy place where freshly brewed coffee,
+                delicious food and meaningful conversations
+                come together.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= STORY ================= -->
+
+    <section class="story-section">
+
+        <div class="story-wrapper">
+
+            <img
+                src="https://images.unsplash.com/photo-1498804103079-a6351b050096?auto=format&fit=crop&w=1000&q=85"
+                alt="Coffee being prepared"
+                class="story-image"
+            >
+
+            <div class="story-content">
+
+                <span class="section-label">
+                    Who We Are
+                </span>
+
+                <h2>
+                    Crafted With Passion,
+                    Served With Heart
+                </h2>
+
+                <p>
+                    Brew & Bean Café was created with a simple
+                    idea: great coffee should bring people
+                    together.
+                </p>
+
+                <p>
+                    From the first aroma of freshly ground
+                    beans in the morning to relaxed conversations
+                    over an evening cup, we want every visit
+                    to feel warm, comfortable and memorable.
+                </p>
+
+                <p>
+                    We carefully select quality ingredients,
+                    prepare every drink with attention and
+                    believe that even the smallest details
+                    can make a big difference.
+                </p>
+
+                <div class="story-signature">
+                    — The Brew & Bean Team
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= STATS ================= -->
+
+    <section class="stats-section">
+
+        <div class="stats-container">
+
+            <div class="stat">
+
+                <h3>5+</h3>
+
+                <p>
+                    Years of Passion
+                </p>
+
+            </div>
+
+            <div class="stat">
+
+                <h3>25K+</h3>
+
+                <p>
+                    Happy Customers
+                </p>
+
+            </div>
+
+            <div class="stat">
+
+                <h3>30+</h3>
+
+                <p>
+                    Menu Favorites
+                </p>
+
+            </div>
+
+            <div class="stat">
+
+                <h3>100%</h3>
+
+                <p>
+                    Made With Love
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= VALUES ================= -->
+
+    <section class="values-section">
+
+        <div class="section-heading">
+
+            <span class="section-label">
+                What Matters To Us
+            </span>
+
+            <h2>
+                Our Core Values
+            </h2>
+
+            <p>
+                Everything we do is guided by a few simple
+                principles that make Brew & Bean special.
+            </p>
+
+        </div>
+
+
+        <div class="values-grid">
+
+            <div class="value-card">
+
+                <div class="value-icon">
+                    ☕
+                </div>
+
+                <h3>
+                    Quality First
+                </h3>
+
+                <p>
+                    We use carefully selected ingredients
+                    and freshly roasted coffee beans to
+                    create consistently delicious drinks.
+                </p>
+
+            </div>
+
+
+            <div class="value-card">
+
+                <div class="value-icon">
+                    ♥
+                </div>
+
+                <h3>
+                    Genuine Hospitality
+                </h3>
+
+                <p>
+                    Every customer deserves a warm welcome,
+                    friendly service and a place where they
+                    can truly feel comfortable.
+                </p>
+
+            </div>
+
+
+            <div class="value-card">
+
+                <div class="value-icon">
+                    🌱
+                </div>
+
+                <h3>
+                    Fresh & Responsible
+                </h3>
+
+                <p>
+                    We believe in fresh ingredients, thoughtful
+                    preparation and making responsible choices
+                    wherever possible.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= JOURNEY ================= -->
+
+    <section class="journey-section">
+
+        <div class="journey-container">
+
+            <div class="section-heading">
+
+                <span class="section-label">
+                    Our Journey
+                </span>
+
+                <h2>
+                    From One Cup To A Community
+                </h2>
+
+                <p>
+                    A small journey built around coffee,
+                    creativity and people.
+                </p>
+
+            </div>
+
+
+            <div class="timeline">
+
+                <div class="timeline-item">
+
+                    <div class="timeline-dot"></div>
+
+                    <span class="timeline-year">
+                        2021
+                    </span>
+
+                    <h3>
+                        The Beginning
+                    </h3>
+
+                    <p>
+                        Brew & Bean started with a simple
+                        dream of creating a welcoming coffee
+                        space for everyone.
+                    </p>
+
+                </div>
+
+
+                <div class="timeline-item">
+
+                    <div class="timeline-dot"></div>
+
+                    <span class="timeline-year">
+                        2022
+                    </span>
+
+                    <h3>
+                        Growing Together
+                    </h3>
+
+                    <p>
+                        Our community grew as more people
+                        discovered their favorite coffee,
+                        breakfast and desserts.
+                    </p>
+
+                </div>
+
+
+                <div class="timeline-item">
+
+                    <div class="timeline-dot"></div>
+
+                    <span class="timeline-year">
+                        2024
+                    </span>
+
+                    <h3>
+                        New Flavors
+                    </h3>
+
+                    <p>
+                        We expanded our menu with new drinks,
+                        breakfast options and handcrafted
+                        desserts.
+                    </p>
+
+                </div>
+
+
+                <div class="timeline-item">
+
+                    <div class="timeline-dot"></div>
+
+                    <span class="timeline-year">
+                        2026
+                    </span>
+
+                    <h3>
+                        The Next Chapter
+                    </h3>
+
+                    <p>
+                        Today, we continue creating better
+                        experiences while staying true to
+                        what started it all: great coffee.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= TEAM ================= -->
+
+    <section class="team-section">
+
+        <div class="section-heading">
+
+            <span class="section-label">
+                Meet The Team
+            </span>
+
+            <h2>
+                The People Behind The Cup
+            </h2>
+
+            <p>
+                A passionate team working together to make
+                every Brew & Bean experience special.
+            </p>
+
+        </div>
+
+
+        <div class="team-grid">
+
+            <div class="team-card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=700&q=80"
+                    alt="Founder"
+                    class="team-image"
+                >
+
+                <div class="team-info">
+
+                    <h3>
+                        Aarav Mehta
+                    </h3>
+
+                    <span class="team-role">
+                        Founder
+                    </span>
+
+                    <p>
+                        The dreamer behind Brew & Bean,
+                        focused on creating a café people
+                        love coming back to.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="team-card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=700&q=80"
+                    alt="Head Barista"
+                    class="team-image"
+                >
+
+                <div class="team-info">
+
+                    <h3>
+                        Maya Shah
+                    </h3>
+
+                    <span class="team-role">
+                        Head Barista
+                    </span>
+
+                    <p>
+                        Passionate about coffee and dedicated
+                        to making every cup perfectly balanced.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="team-card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=700&q=80"
+                    alt="Chef"
+                    class="team-image"
+                >
+
+                <div class="team-info">
+
+                    <h3>
+                        Rohan Patel
+                    </h3>
+
+                    <span class="team-role">
+                        Head Chef
+                    </span>
+
+                    <p>
+                        Creating fresh breakfast dishes and
+                        desserts that pair perfectly with coffee.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= CTA ================= -->
+
+    <section class="cta-section">
+
+        <h2>
+            Ready For Your Next Coffee?
+        </h2>
+
+        <p>
+            Explore our menu and find your new favorite.
+        </p>
+
+        <a href="menu.html" class="cta-btn">
+            Explore Our Menu
+        </a>
+
+    </section>
+
+</main>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <div class="footer-container">
+
+        <div class="footer-brand">
+
+            <h3>
+                BREW & BEAN CAFÉ
+            </h3>
+
+            <p>
+                Fresh coffee, delicious food and warm
+                moments. Made with quality ingredients
+                and served with love.
+            </p>
+
+        </div>
+
+
+        <div class="footer-column">
+
+            <h4>
+                Quick Links
+            </h4>
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="menu.html">
+                Menu
+            </a>
+
+            <a href="about.html">
+                About Us
+            </a>
+
+            <a href="contact.html">
+                Contact
+            </a>
+
+        </div>
+
+
+        <div class="footer-column">
+
+            <h4>
+                Account
+            </h4>
+
+            <a href="login.html">
+                Login
+            </a>
+
+            <a href="register.html">
+                Register
+            </a>
+
+            <a href="account.html">
+                My Account
+            </a>
+
+            <a href="cart.html">
+                Cart
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        © 2026 Brew & Bean Café. All rights reserved.
+
+    </div>
+
+</footer>
+
+
+<script>
+
+    /* ================= CART COUNT ================= */
+
+    function updateCartCount() {
+
+        const cart =
+            JSON.parse(
+                localStorage.getItem("cafe_cart")
+            ) || [];
+
+
+        const totalQuantity =
+            cart.reduce(
+                (total, item) =>
+                    total + Number(item.quantity || 0),
+                0
+            );
+
+
+        document.getElementById("cartCount")
+            .textContent = totalQuantity;
+    }
+
+
+    /* ================= MOBILE MENU ================= */
+
+    const menuToggle =
+        document.getElementById("menuToggle");
+
+    const navLinks =
+        document.getElementById("navLinks");
+
+
+    menuToggle.addEventListener("click", function () {
+
+        navLinks.classList.toggle("open");
+
+    });
+
+
+    /* ================= INITIALIZE ================= */
+
+    updateCartCount();
+
+</script>
+
+</body>
+</html>
